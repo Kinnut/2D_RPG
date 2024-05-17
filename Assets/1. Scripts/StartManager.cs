@@ -49,11 +49,11 @@ public class StartManager : MonoBehaviour
             loginUI.SetActive(false);
             errorUI.SetActive(true);
             errorTxt.text = "비밀번호가 일치하지 않습니다.";
-            Invoke("ErrorMessageExit", 1.5f);
+            Invoke("ErrorMessageExit", 3f);
             return;
         }
 
-        SceneManager.LoadScene("1. SelectScene");
+        SceneManager.LoadScene("2. SelectScene");
     }
 
     public void FindBtn()
@@ -68,18 +68,11 @@ public class StartManager : MonoBehaviour
         {
             errorTxt.text = "잘못된 힌트입니다.";
         }
-        Invoke("ErrorMessageExit", 1.5f);
+        Invoke("ErrorMessageExit", 3f);
     }
 
     void ErrorMessageExit()
     {
         errorUI.SetActive(false);
     }
-
-    private void Update()
-    {
-        Debug.Log(PlayerPrefs.GetString("ID"));
-        Debug.Log(PlayerPrefs.GetString("PW"));
-        Debug.Log(PlayerPrefs.GetString("Find"));
-    }   
 }
