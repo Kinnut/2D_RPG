@@ -21,7 +21,7 @@ public class SelectCharacter : MonoBehaviour
     public GameObject gameStart;
     public Text gameCountTxt;
     private bool isPlayBtnClicked = false;
-    private float gameCount = 5f;
+    private float gameCount = 3f;
 
     public static string characterName;
 

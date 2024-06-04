@@ -9,27 +9,28 @@ public class GameManager : MonoBehaviour
 
     public float playerHP = 100f;
     public float playerExp = 1f;
+    public int Coin = 0;
 
     public static GameManager Instance;
-    #region singleton
+
     private void Awake()
     {
-        if (Instance == null)
-            Instance = this;
-        else if (Instance != this)
-            Destroy(gameObject);
+        Instance = this;
+        userID = PlayerPrefs.GetString("ID");
 
         DontDestroyOnLoad(Instance);
     }
-    #endregion
 
     void Start()
     {
         userID = PlayerPrefs.GetString("ID");
     }
 
-    void Update()
+    public GameObject SpawnPlayer(Transform spawnPos)
     {
-        
+        GameObject playerPref = Resources.Load<GameObject>("Characters/" + characterName);
+        GameObject player = Instantiate(playerPref, spawnPos.position, spawnPos.rotation);
+
+        return player;
     }
 }

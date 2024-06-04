@@ -7,8 +7,11 @@ public class Character : MonoBehaviour
 {
     public float speed;
     public float jumpPower;
+    private float vertical;
 
     bool isFloor;
+    bool isLadder;
+    bool isClimbing;
     bool justAttack, justJump;
 
     public Animator animator;
@@ -50,12 +53,14 @@ public class Character : MonoBehaviour
         Move();
         JumpCheck();
         AttackCheck();
+        ClimbingCheck();
     }
 
     private void FixedUpdate()
     {
         Jump();
         Attack();
+        Climbing();
     }
 
     void AttackCheck()
@@ -152,6 +157,45 @@ public class Character : MonoBehaviour
             rigidbody2d.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
             animator.SetTrigger("Jump");
             audioSource.PlayOneShot(jumpClip);
+        }
+    }
+
+    private void ClimbingCheck()
+    {
+        vertical = Input.GetAxis("Vertical");
+        if (isLadder && Mathf.Abs(vertical) > 0)
+        {
+            isClimbing = true;
+        }
+    }
+
+    private void Climbing()
+    {
+        if (isClimbing)
+        {
+            rigidbody2d.gravityScale = 0f;
+            rigidbody2d.velocity = new Vector2(rigidbody2d.velocity.x, vertical * speed);
+        }
+        else
+        {
+            rigidbody2d.gravityScale = 1f;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Ladder")
+        {
+            isLadder = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Ladder")
+        {
+            isLadder = false;
+            isClimbing = false;
         }
     }
 }
