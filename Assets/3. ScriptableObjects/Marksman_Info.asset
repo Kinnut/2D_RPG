@@ -10,8 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 68f35ec5b8874f74e937a0222f94b692, type: 3}
-  m_Name: WarriorInfo
+  m_Name: Marksman_Info
   m_EditorClassIdentifier: 
-  name: "\uC804\uC0AC"
-  describtion: "\uAC15\uB825\uD55C \uADFC\uC811\uACF5\uACA9\uACFC \uB2E4\uB978 \uC9C1\uC5C5\uB4E4\uC5D0
-    \uBE44\uD574 \uCCB4\uB825\uC774 \uB192\uC740 \uD3B8 \uC774\uB2E4."
+  name: {fileID: 21300000, guid: 1c62ba711064f5944a448affa0da1c48, type: 3}
+  describtion: "\uAD81\uC218 \uC911 \uC11D\uAD81 \uBC0F \uC800\uACA9 \uD2B9\uD654
+    \uC9C1\uC5C5\uC774\uBA70,       1:1 \uC804\uD22C\uC5D0 \uD2B9\uD654\uB418\uC5B4
+    \uC788\uB2E4."
+  characterImg: {fileID: 21300000, guid: 5932ead26c790684397523be54a38c71, type: 3}

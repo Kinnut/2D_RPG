@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class SelectCharacter : MonoBehaviour
 {
     [Header("Ό³Έν")]
-    public Text nameTxt;
+    public Image nameImg;
     public Text desTxt;
     public Image characterImg;
 
@@ -66,9 +66,9 @@ public class SelectCharacter : MonoBehaviour
 
     private void SetPanelInfo()
     {
-        nameTxt.text = characterInfos[charIndex].name;
+        nameImg.sprite = characterInfos[charIndex].name;
         desTxt.text = characterInfos[charIndex].describtion;
-        characterImg.sprite = characters[charIndex].GetComponent<SpriteRenderer>().sprite;
+        characterImg.sprite = characterInfos[charIndex].characterImg;
     }
 
     private void Start()

@@ -13,7 +13,6 @@ public class StartManager : MonoBehaviour
     public InputField membershipFind;
 
     [Header("로그인")]
-    public GameObject loginUI;
     public InputField loginID;
     public InputField loginPW;
 
@@ -38,15 +37,13 @@ public class StartManager : MonoBehaviour
     {
         if (PlayerPrefs.GetString("ID") != loginID.text)
         {
-            loginUI.SetActive(false);
             errorUI.SetActive(true);
-            errorTxt.text = "아이디가 일치하지 않습니다.";
+            errorTxt.text = "존재하지 않는 ID입니다.";
             Invoke("ErrorMessageExit", 3f);
             return;
         }
         if (PlayerPrefs.GetString("PW") != loginPW.text)
         {
-            loginUI.SetActive(false);
             errorUI.SetActive(true);
             errorTxt.text = "비밀번호가 일치하지 않습니다.";
             Invoke("ErrorMessageExit", 3f);
