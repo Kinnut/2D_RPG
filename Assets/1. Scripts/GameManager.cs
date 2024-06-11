@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public string characterName;
+    public Define.Player selectedPlayer;
     public string userID;
 
     public float playerHP = 100f;
@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject SpawnPlayer(Transform spawnPos)
     {
-        GameObject playerPref = Resources.Load<GameObject>("Characters/" + characterName);
+        GameObject playerPref = Resources.Load<GameObject>("Characters/" + selectedPlayer.ToString());
         GameObject player = Instantiate(playerPref, spawnPos.position, spawnPos.rotation);
 
         return player;

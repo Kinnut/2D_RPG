@@ -23,6 +23,9 @@ public class SelectCharacter : MonoBehaviour
     private bool isPlayBtnClicked = false;
     private float gameCount = 3f;
 
+    [Header("수행 추가 항목")]
+    public Text idTxt;
+
     public static string characterName;
 
     private void Update()
@@ -42,7 +45,9 @@ public class SelectCharacter : MonoBehaviour
     {
         gameStart.SetActive(true);
         isPlayBtnClicked = true;
-        GameManager.Instance.characterName = characters[charIndex].name;
+
+        Define.Player player = (Define.Player)System.Enum.Parse(typeof(Define.Player), characters[charIndex].name);
+        GameManager.Instance.selectedPlayer = player;
     }
 
     public void SelectCharacterBtn(string btnName)
@@ -73,6 +78,8 @@ public class SelectCharacter : MonoBehaviour
 
     private void Start()
     {
+        idTxt.text = GameManager.Instance.userID;
+
         SetPanelInfo();
     }
 }

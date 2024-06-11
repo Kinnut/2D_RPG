@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.Tilemaps;
 using UnityEngine;
 
 public class Character : MonoBehaviour
@@ -14,16 +16,17 @@ public class Character : MonoBehaviour
     bool isClimbing;
     bool justAttack, justJump;
 
+    private bool faceRight = true;
+
     public Animator animator;
-    private SpriteRenderer spriteRenderer;
     private Rigidbody2D rigidbody2d;
 
     private AudioSource audioSource;
-    public AudioClip attackClip;
-    public AudioClip jumpClip;
+    private AudioClip attackClip;
+    private AudioClip jumpClip;
 
     public float attackSpeed;
-    public GameObject attackObj;
+    private GameObject attackObj;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -44,7 +47,6 @@ public class Character : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
         rigidbody2d = GetComponent<Rigidbody2D>();
     }
 
@@ -77,25 +79,27 @@ public class Character : MonoBehaviour
         {
             transform.Translate(Vector3.right * speed * Time.deltaTime);
             animator.SetBool("Move", true);
+            if (faceRight) Flip();
         }
         else if (Input.GetKey(KeyCode.LeftArrow))
         {
             transform.Translate(Vector3.left * speed * Time.deltaTime);
             animator.SetBool("Move", true);
+            if (!faceRight) Flip();
         }
         else
         {
             animator.SetBool("Move", false);
         }
+    }
 
-        if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            spriteRenderer.flipX = false;
-        }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            spriteRenderer.flipX = true;
-        }
+    private void Flip()
+    {
+        faceRight = !faceRight;
+
+        Vector3 localScale = transform.localScale;
+        localScale.x *= -1;
+        transform.localScale = localScale;
     }
 
     void JumpCheck()
@@ -125,7 +129,7 @@ public class Character : MonoBehaviour
             }
             else
             {
-                if (spriteRenderer.flipX)
+                if (!faceRight)
                 {
                     GameObject obj = Instantiate(attackObj, transform.position, Quaternion.Euler(0, 180, 0));
                     obj.GetComponent<Rigidbody2D>().AddForce(Vector2.left * attackSpeed, ForceMode2D.Impulse);
