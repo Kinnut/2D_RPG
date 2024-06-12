@@ -10,7 +10,7 @@ public class Item : MonoBehaviour
         {
             if(gameObject.tag == "Coin")
             {
-                GameManager.Instance.Coin += 1000;
+                GameManager.Instance.coin += 1000;
                 Destroy(gameObject);
             }
             else if (gameObject.tag == "Potion")

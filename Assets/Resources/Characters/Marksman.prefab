@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4691190622172346675}
   - component: {fileID: 6736788398837530403}
   - component: {fileID: 6609572060331087078}
+  - component: {fileID: 6031257490057376823}
   m_Layer: 0
   m_Name: Marksman
   m_TagString: Player
@@ -124,7 +125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 4
-  jumpPower: 5
+  jumpPower: 6
   strength: 20
   animator: {fileID: 3584654185283717369}
   attackSpeed: 5
@@ -214,6 +215,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bow: {fileID: 5046656349382608197}
+--- !u!114 &6031257490057376823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4795124711532468629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b325572f03cf53447a6b4fb5dc0dbe5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5046656349382608197
 GameObject:
   m_ObjectHideFlags: 0

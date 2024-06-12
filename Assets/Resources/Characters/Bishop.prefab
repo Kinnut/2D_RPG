@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2038812690143222107}
   - component: {fileID: 8170984253307473623}
   - component: {fileID: 4446443811300112058}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Skill_Back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,7 +120,8 @@ GameObject:
   - component: {fileID: 336911512660325893}
   - component: {fileID: 4209563785221238734}
   - component: {fileID: 8247574569423361370}
-  m_Layer: 0
+  - component: {fileID: 7188632091565621643}
+  m_Layer: 7
   m_Name: Bishop
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -137,7 +138,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.635, y: -2.544, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6068930714462016426}
@@ -275,7 +276,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.06738868, y: 0.062137842}
+  m_Offset: {x: -0.06738868, y: 0.01647897}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -286,7 +287,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.6076445, y: 1.1526475}
+  m_Size: {x: 0.6076445, y: 1.0195457}
   m_EdgeRadius: 0
 --- !u!114 &8247574569423361370
 MonoBehaviour:
@@ -301,10 +302,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 4
-  jumpPower: 5
+  jumpPower: 6
+  strength: 20
   animator: {fileID: 8562935711897874367}
   attackSpeed: 5
   attackObj: {fileID: 6942871759077530685}
+--- !u!114 &7188632091565621643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3210383167452044618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b325572f03cf53447a6b4fb5dc0dbe5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6942871759077530685
 GameObject:
   m_ObjectHideFlags: 0
@@ -314,7 +328,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6068930714462016426}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Angelray
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -351,7 +365,7 @@ GameObject:
   - component: {fileID: 8372638048134105324}
   - component: {fileID: 1139298171609178562}
   - component: {fileID: 7220120151856876549}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Skill_Front
   m_TagString: Attack
   m_Icon: {fileID: 0}

@@ -12,6 +12,7 @@ TagManager:
   - Potion
   - Strength
   - Speed
+  - Teleporter
   layers:
   - Default
   - TransparentFX
@@ -19,8 +20,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - Floor
+  - Player
   - 
   - 
   - 

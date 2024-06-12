@@ -29,6 +29,8 @@ public class Character : MonoBehaviour
     public float attackSpeed;
     public GameObject attackObj;
 
+    int playerLayer, floorLayer;
+
     #region Singleton
     public static Character Instance;
 
@@ -40,6 +42,8 @@ public class Character : MonoBehaviour
         }
     }
     #endregion
+
+
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -61,6 +65,9 @@ public class Character : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
         rigidbody2d = GetComponent<Rigidbody2D>();
+
+        playerLayer = LayerMask.NameToLayer("Player");
+        floorLayer = LayerMask.NameToLayer("Floor");
     }
 
     private void Update()
@@ -69,6 +76,11 @@ public class Character : MonoBehaviour
         JumpCheck();
         AttackCheck();
         ClimbingCheck();
+
+        if (rigidbody2d.velocity.y > 0)
+            Physics2D.IgnoreLayerCollision(playerLayer, floorLayer, true);
+        else
+            Physics2D.IgnoreLayerCollision(playerLayer, floorLayer, false);
     }
 
     private void FixedUpdate()

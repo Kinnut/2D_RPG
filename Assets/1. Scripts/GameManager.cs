@@ -9,7 +9,9 @@ public class GameManager : MonoBehaviour
 
     public float playerHP = 100f;
     public float playerExp = 1f;
-    public int Coin = 0;
+    public int coin = 0;
+
+    public float playTime;
 
     public static GameManager Instance;
 
@@ -24,6 +26,12 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         userID = PlayerPrefs.GetString("ID");
+    }
+
+    void Update()
+    {
+        // 게임이 진행 중일 때만 시간을 증가시킴
+        playTime += Time.deltaTime;
     }
 
     public GameObject SpawnPlayer(Transform spawnPos)

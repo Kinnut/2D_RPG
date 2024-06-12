@@ -180,6 +180,7 @@ GameObject:
   - component: {fileID: 2587251285328026556}
   - component: {fileID: 2893378150381401572}
   - component: {fileID: 8506036806050171033}
+  - component: {fileID: 5451785487424828774}
   m_Layer: 0
   m_Name: DarkNight
   m_TagString: Player
@@ -361,8 +362,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 4
-  jumpPower: 5
+  jumpPower: 6
   strength: 20
   animator: {fileID: 4058891255320952647}
   attackSpeed: 5
   attackObj: {fileID: 532518993636396640}
+--- !u!114 &5451785487424828774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5102997276569121678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b325572f03cf53447a6b4fb5dc0dbe5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
