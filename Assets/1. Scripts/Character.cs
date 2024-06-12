@@ -9,6 +9,7 @@ public class Character : MonoBehaviour
 {
     public float speed;
     public float jumpPower;
+    public float strength = 20;
     private float vertical;
 
     bool isFloor;
@@ -26,7 +27,19 @@ public class Character : MonoBehaviour
     private AudioClip jumpClip;
 
     public float attackSpeed;
-    private GameObject attackObj;
+    public GameObject attackObj;
+
+    #region Singleton
+    public static Character Instance;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+    }
+    #endregion
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -61,7 +74,7 @@ public class Character : MonoBehaviour
     private void FixedUpdate()
     {
         Jump();
-        Attack();
+        _Attack();
         Climbing();
     }
 
@@ -113,7 +126,7 @@ public class Character : MonoBehaviour
         }
     }
 
-    void Attack()
+    void _Attack()
     {
         if (justAttack)
         {
@@ -122,14 +135,22 @@ public class Character : MonoBehaviour
             animator.SetTrigger("Attack");
             audioSource.PlayOneShot(attackClip);
 
-            if (gameObject.name == "Warrior")
+            if (gameObject.name == "Bishop(Clone)") // ºñ¼ó
             {
                 attackObj.SetActive(true);
-                Invoke("SetAttackObjnactive", 0.5f);
+                Invoke("SetAttackObjnactive", 1.3f);
             }
-            else
+            else if (gameObject.name == "DarkNight(Clone)") // ´ÙÅ©³ªÀÌÆ®
             {
-                if (!faceRight)
+                attackObj.SetActive(true);
+                Invoke("SetAttackObjnactive", 1.3f);
+            }
+            else if (gameObject.name == "Marksman(Clone)") // ½Å±Ã
+            {
+                attackObj.SetActive(true);
+                Invoke("SetAttackObjnactive", 1.3f);
+
+                if (faceRight)
                 {
                     GameObject obj = Instantiate(attackObj, transform.position, Quaternion.Euler(0, 180, 0));
                     obj.GetComponent<Rigidbody2D>().AddForce(Vector2.left * attackSpeed, ForceMode2D.Impulse);
@@ -143,9 +164,6 @@ public class Character : MonoBehaviour
                 }
             }
         }
-
-
-
     }
 
     void SetAttackObjnactive()

@@ -7,11 +7,6 @@ public class CameraPos : MonoBehaviour
 {
     private GameObject playerObj;
 
-    void Start()
-    {
-        
-    }
-
     void Update()
     {
         if (playerObj == null)

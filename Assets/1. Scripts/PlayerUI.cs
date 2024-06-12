@@ -7,7 +7,6 @@ using UnityEngine.UI;
 
 public class PlayerUI : MonoBehaviour
 {
-    public Image characterImg;
     public Text idTxt;
 
     public Slider hpSlider;
@@ -28,7 +27,6 @@ public class PlayerUI : MonoBehaviour
 
     private void Display()
     {
-        characterImg.sprite = player.GetComponent<SpriteRenderer>().sprite;
         hpSlider.value = GameManager.Instance.playerHP;
     }
 }

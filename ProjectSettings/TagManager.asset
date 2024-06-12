@@ -9,6 +9,9 @@ TagManager:
   - Ladder
   - Coin
   - HP
+  - Potion
+  - Strength
+  - Speed
   layers:
   - Default
   - TransparentFX
