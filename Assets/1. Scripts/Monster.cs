@@ -35,10 +35,11 @@ public class Monster : MonoBehaviour
         if (moveTime <= turnTime)
         {
             this.transform.Translate(moveSpeed * Time.deltaTime, 0, 0);
+            monsterAnim.SetBool("Move", true);
         }
         else
         {
-            turnTime = Random.RandomRange(1, 5);
+            turnTime = Random.RandomRange(1, 3);
             moveTime = 0;
 
             transform.Rotate(0, 180, 0);
@@ -51,13 +52,13 @@ public class Monster : MonoBehaviour
 
         if (collision.gameObject.tag == "Player")
         {
-            monsterAnim.SetTrigger("Attack");
+            //monsterAnim.SetTrigger("Attack");
             GameManager.Instance.playerHP -= monsterDamaged;
         }
 
         if (collision.gameObject.tag == "Attack")
         {
-            monsterAnim.SetTrigger("Damaged");
+            monsterAnim.SetTrigger("Hit");
             monsterHP -= collision.gameObject.GetComponent<Attack>().attackDamage;
 
             if (monsterHP <= 0)

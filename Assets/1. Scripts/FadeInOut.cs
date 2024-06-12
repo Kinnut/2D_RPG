@@ -11,11 +11,6 @@ public class FadeInOut : MonoBehaviour
 
     public float TimeToFade;
 
-    void Start()
-    {
-        
-    }
-
     void Update()
     {
         if (fadein == true)
