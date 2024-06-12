@@ -397,7 +397,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd0fcdc0961df8a448f84d18fd95b5d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedPlayer: 1
+  selectedPlayer: 0
   userID: "\uBBFC\uADDC"
   playerHP: 100
   playerExp: 1
