@@ -11,6 +11,7 @@ public class Monster : MonoBehaviour
     private float turnTime = 0;
     private bool isDie = false;
 
+
     public float moveSpeed = 3f;
     public GameObject[] itemObj;
 
@@ -19,6 +20,7 @@ public class Monster : MonoBehaviour
     void Start()
     {
         monsterAnim = GetComponent<Animator>();
+        PlayerUI.Instance.monsterConut++;
     }
 
     void Update()
@@ -52,7 +54,7 @@ public class Monster : MonoBehaviour
 
         if (collision.gameObject.tag == "Player")
         {
-            //monsterAnim.SetTrigger("Attack");
+            monsterAnim.SetTrigger("Attack");
             GameManager.Instance.playerHP -= monsterDamaged;
         }
 
@@ -76,6 +78,8 @@ public class Monster : MonoBehaviour
 
         GetComponent<Collider2D>().enabled = false;
         Destroy(gameObject, 1.5f);
+
+        PlayerUI.Instance.monsterConut--;
     }
 
     private void OnDestroy()

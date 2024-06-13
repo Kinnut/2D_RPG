@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class StartManager : MonoBehaviour
 {
+    FadeInOut fade;
+
     [Header("회원가입")]
     public GameObject membershipUI;
     public InputField membershipID;
@@ -23,6 +25,11 @@ public class StartManager : MonoBehaviour
     [Header("에러 메세지")]
     public GameObject errorUI;
     public Text errorTxt;
+
+    private void Start()
+    {
+        fade = FindObjectOfType<FadeInOut>();
+    }
 
     public void MembershipBtn()
     {
@@ -50,6 +57,13 @@ public class StartManager : MonoBehaviour
             return;
         }
 
+        StartCoroutine(ChangeScene());
+    }
+
+    public IEnumerator ChangeScene()
+    {
+        fade.fadein = true;
+        yield return new WaitForSeconds(1);
         SceneManager.LoadScene("2. SelectScene");
     }
 

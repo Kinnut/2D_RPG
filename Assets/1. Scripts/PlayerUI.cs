@@ -5,31 +5,48 @@ using UnityEngine.UI;
 public class PlayerUI : MonoBehaviour
 {
     public Text idTxt;
-    public Text CoinTxt;
-    public Text SpeedTxt;
-    public Text StrengthTxt;
-    public Text TimeTxt;  // 시간을 표시할 Text 컴포넌트 추가
+    public Text coinTxt;
+    public Text speedTxt;
+    public Text strengthTxt;
+    public Text timeTxt;
+    public Text monsterTxt;
+
+    public int monsterConut;
 
     public Slider hpSlider;
 
     private GameObject player;
     public GameObject spawnPos;
 
+    #region Singleton
+    public static PlayerUI Instance;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+    }
+    #endregion
+
     void Start()
     {
         idTxt.text = GameManager.Instance.userID;
+        monsterTxt.text = $"{monsterConut}마리";
 
         player = GameManager.Instance.SpawnPlayer(spawnPos.transform);
     }
 
     void Update()
     {
-        CoinTxt.text = $"{GameManager.Instance.coin}메소";
-        SpeedTxt.text = $"{Character.Instance.speed}";
-        StrengthTxt.text = $"{Character.Instance.strength}";
+        coinTxt.text = $"{GameManager.Instance.coin}메소";
+        speedTxt.text = $"{Character.Instance.speed}";
+        strengthTxt.text = $"{Character.Instance.strength}";
+        monsterTxt.text = $"{monsterConut}마리";
 
         Display();
-        UpdateTime();  // 매 프레임마다 시간을 업데이트
+        UpdateTime();
     }
 
     private void Display()
@@ -39,18 +56,18 @@ public class PlayerUI : MonoBehaviour
 
     private void UpdateTime()
     {
-        float playTime = GameManager.Instance.playTime;  // 게임 진행 시간 (초 단위)
+        float playTime = GameManager.Instance.playTime;
 
         int minutes = Mathf.FloorToInt(playTime / 60);
         int seconds = Mathf.FloorToInt(playTime % 60);
 
         if (minutes > 0)
         {
-            TimeTxt.text = $"{minutes}분 {seconds}초";
+            timeTxt.text = $"{minutes}분 {seconds}초";
         }
         else
         {
-            TimeTxt.text = $"{seconds}초";
+            timeTxt.text = $"{seconds}초";
         }
     }
 }
