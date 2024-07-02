@@ -18,7 +18,7 @@ public class StoreUI : MonoBehaviour
         {
             itemImg[i].sprite = itemData[i].itemImage;
             itemTxt[i].text = $"{itemData[i].itemName}";
-            priceTxt[i].text = $"({itemData[i].itemPrice:N0}P)";
+            priceTxt[i].text = $"({itemData[i].itemPrice:N0}$)";
         }
     }
 }
