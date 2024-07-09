@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
     public string userID;
 
     public float playerHP = 100f;
+    public float playerMP = 100f;
+    public float playerDef = 1f;
     public float playerExp = 1f;
     public int Coin = 0;
 
@@ -21,6 +23,16 @@ public class GameManager : MonoBehaviour
 
         DontDestroyOnLoad(Instance);
     }
+
+    public Character Character
+    {
+        get { return player.GetComponent<Character>(); }
+    }
+    public Attack CharacterAttack
+    {
+        get { return Character.attackObj.GetComponent<Attack>(); }
+    }
+
 
     void Start()
     {

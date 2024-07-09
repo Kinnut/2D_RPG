@@ -11,13 +11,15 @@ public class PlayerUI : MonoBehaviour
     public Text idTxt;
 
     public Slider hpSlider;
+    public Slider mpSlider;
+    public Slider expSlider;
 
     private GameObject player;
-    public GameObject spawnPos;
 
     void Start()
     {
         idTxt.text = GameManager.Instance.userID;
+        GameObject spawnPos = GameObject.FindGameObjectWithTag("initPos");
         player = GameManager.Instance.SpawnPlayer(spawnPos.transform);
     }
 
@@ -30,5 +32,7 @@ public class PlayerUI : MonoBehaviour
     {
         characterImg.sprite = player.GetComponent<SpriteRenderer>().sprite;
         hpSlider.value = GameManager.Instance.playerHP;
+        hpSlider.value = GameManager.Instance.playerMP;
+        hpSlider.value = GameManager.Instance.playerExp;
     }
 }
