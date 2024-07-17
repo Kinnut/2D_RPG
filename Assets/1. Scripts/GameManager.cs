@@ -2,18 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public class CharacterStat
+{
+    public float hp = 100f;
+    public float mp = 100f;
+    public float def = 1f;
+    public float exp = 1f;
+    public int lv = 1;
+    public int coin = 1000000;
+}
+
 public class GameManager : MonoBehaviour
 {
-    public string characterName;
+    public Define.Player selectPlayer;
     public string userID;
-
-    public float playerHP = 100f;
-    public float playerMP = 100f;
-    public float playerDef = 1f;
-    public float playerExp = 1f;
-    public int Coin = 0;
-
-    public GameObject player;   
+    public CharacterStat playerStat = new CharacterStat();
+    [HideInInspector]
+    public GameObject player; 
+    
     public static GameManager Instance;
 
     private void Awake()
@@ -41,7 +48,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject SpawnPlayer(Transform spawnPos)
     {
-        GameObject playerPref = Resources.Load<GameObject>("Characters/" + characterName);
+        GameObject playerPref = Resources.Load<GameObject>("Characters/" + selectPlayer.ToString());
         player = Instantiate(playerPref, spawnPos.position, spawnPos.rotation);
 
         return player;

@@ -5710,13 +5710,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd0fcdc0961df8a448f84d18fd95b5d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterName: Warrior
+  selectPlayer: 0
   userID: Test
-  playerHP: 100
-  playerMP: 100
-  playerDef: 1
-  playerExp: 1
-  Coin: 0
+  playerStat:
+    hp: 100
+    mp: 100
+    def: 1
+    exp: 1
+    lv: 1
+    coin: 1000000
   player: {fileID: 0}
 --- !u!4 &662279762
 Transform:
@@ -12848,6 +12850,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterImg: {fileID: 382162642}
   idTxt: {fileID: 2112328748}
+  lvTxt: {fileID: 353700006}
   hpSlider: {fileID: 376665227}
   mpSlider: {fileID: 1701848245}
   expSlider: {fileID: 738319776}

@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.Tilemaps;
 using UnityEngine;
 
 public class Character : MonoBehaviour
@@ -13,6 +15,7 @@ public class Character : MonoBehaviour
     bool isLadder;
     bool isClimbing;
     bool justAttack, justJump;
+    private bool faceRight;
 
     public Animator animator;
     private SpriteRenderer spriteRenderer;
@@ -77,6 +80,7 @@ public class Character : MonoBehaviour
         {
             transform.Translate(Vector3.right * speed * Time.deltaTime);
             animator.SetBool("Move", true);
+            if (!faceRight) Flip();
         }
         else if (Input.GetKey(KeyCode.LeftArrow))
         {
@@ -96,6 +100,15 @@ public class Character : MonoBehaviour
         {
             spriteRenderer.flipX = true;
         }
+    }
+
+    private void Flip()
+    {
+        faceRight = !faceRight;
+
+        Vector3 localScale = transform.localScale;
+        localScale.x *= -1;
+        transform.localScale = localScale;
     }
 
     void JumpCheck()
@@ -125,7 +138,7 @@ public class Character : MonoBehaviour
             }
             else
             {
-                if (spriteRenderer.flipX)
+                if (!faceRight)
                 {
                     GameObject obj = Instantiate(attackObj, transform.position, Quaternion.Euler(0, 180, 0));
                     obj.GetComponent<Rigidbody2D>().AddForce(Vector2.left * attackSpeed, ForceMode2D.Impulse);

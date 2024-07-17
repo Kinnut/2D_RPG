@@ -30,7 +30,7 @@ public class BackPackManager : MonoBehaviour
     private void Update()
     {
         BackPackUIOn();
-        coinText.text = $"{GameManager.Instance.Coin:N0}$";
+        coinText.text = $"{GameManager.Instance.playerStat.coin:N0}$";
     }
 
     private void BackPackUIOn()
@@ -62,31 +62,31 @@ public class BackPackManager : MonoBehaviour
 
         if (inventoryItem.itemID == "HP")
         {
-            GameManager.Instance.playerHP += 10f;
-            GameManager.Instance.playerHP = Mathf.Min(GameManager.Instance.playerHP, 100f);
+            GameManager.Instance.playerStat.hp += 10f;
+            GameManager.Instance.playerStat.hp = Mathf.Min(GameManager.Instance.playerStat.hp, 100f);
             PopupMsgManager.Instance.ShowPopupMessage("체력이 10 회복 되었습니다.");
         }
         else if (inventoryItem.itemID == "MP")
         {
-            GameManager.Instance.playerMP += 10f;
-            GameManager.Instance.playerMP = Mathf.Min(GameManager.Instance.playerMP, 100f);
+            GameManager.Instance.playerStat.mp += 10f;
+            GameManager.Instance.playerStat.mp = Mathf.Min(GameManager.Instance.playerStat.mp, 100f);
             PopupMsgManager.Instance.ShowPopupMessage("마나가 10 회복 되었습니다.");
         }
         else if (inventoryItem.itemID == "HP_Power")
         {
-            GameManager.Instance.playerHP = 100f;
+            GameManager.Instance.playerStat.hp = 100f;
             PopupMsgManager.Instance.ShowPopupMessage("체력 전체가 회복 되었습니다.");
         }
         else if (inventoryItem.itemID == "MP_Power")
         {
-            GameManager.Instance.playerMP = 100f;
+            GameManager.Instance.playerStat.mp = 100f;
             PopupMsgManager.Instance.ShowPopupMessage("마나 전체가 회복 되었습니다.");
         }
         else if (inventoryItem.itemID == "Def")
         {
             StartCoroutine(DefItem());
         }
-        else if (inventoryItem.itemID == "Speed")
+        else if (inventoryItem.itemID == "Spd")
         {
             StartCoroutine(SpeedItem());
         }
@@ -110,18 +110,18 @@ public class BackPackManager : MonoBehaviour
     IEnumerator DefItem()
     {
         defItemUsingCount++;
-        GameManager.Instance.playerDef *= 2;
+        GameManager.Instance.playerStat.def *= 2;
         GameManager.Instance.Character.GetComponent<SpriteRenderer>().color = Color.blue;
-        Debug.Log("1. PlayerDef : " + GameManager.Instance.playerDef);
+        Debug.Log("1. PlayerDef : " + GameManager.Instance.playerStat.def);
         yield return new WaitForSeconds(10f);
 
         defItemUsingCount--;
-        GameManager.Instance.playerDef /= 2;
+        GameManager.Instance.playerStat.def /= 2;
         if (defItemUsingCount == 0)
         {
             GameManager.Instance.Character.GetComponent<SpriteRenderer>().color = Color.white;
         }
-        Debug.Log("2. PlayerDef : " + GameManager.Instance.playerDef);
+        Debug.Log("2. PlayerDef : " + GameManager.Instance.playerStat.def);
     }
     IEnumerator SpeedItem()
     {
