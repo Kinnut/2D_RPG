@@ -704,6 +704,10 @@ MonoBehaviour:
   skillExplainUI: {fileID: 1336843025}
   skillImage: {fileID: 471989575}
   skillText: {fileID: 834907427}
+  skills:
+  - {fileID: 227016780}
+  - {fileID: 329401131}
+  - {fileID: 748930980}
 --- !u!1 &75871908
 GameObject:
   m_ObjectHideFlags: 0
@@ -6282,7 +6286,7 @@ MonoBehaviour:
     mp: 100
     def: 1
     exp: 1
-    lv: 1
+    lv: 110
     coin: 1000000
   player: {fileID: 0}
 --- !u!4 &662279762

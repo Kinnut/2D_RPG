@@ -15,7 +15,7 @@ public class Character : MonoBehaviour
     bool isLadder;
     bool isClimbing;
     bool justAttack, justJump;
-    private bool faceRight;
+    private bool faceRight = true;
 
     public Animator animator;
     private Rigidbody2D rigidbody2d;
@@ -147,6 +147,11 @@ public class Character : MonoBehaviour
 
     }
 
+    public void AttackAnimation()
+    {
+        animator.SetTrigger("Attack");
+    }   
+    
     void SetAttackObjnactive()
     {
         attackObj.SetActive(false);
