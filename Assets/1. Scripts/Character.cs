@@ -18,7 +18,6 @@ public class Character : MonoBehaviour
     private bool faceRight;
 
     public Animator animator;
-    private SpriteRenderer spriteRenderer;
     private Rigidbody2D rigidbody2d;
 
     private AudioSource audioSource;
@@ -47,7 +46,6 @@ public class Character : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
         rigidbody2d = GetComponent<Rigidbody2D>();
     }
 
@@ -86,19 +84,11 @@ public class Character : MonoBehaviour
         {
             transform.Translate(Vector3.left * speed * Time.deltaTime);
             animator.SetBool("Move", true);
+            if (faceRight) Flip();
         }
         else
         {
             animator.SetBool("Move", false);
-        }
-
-        if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            spriteRenderer.flipX = false;
-        }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            spriteRenderer.flipX = true;
         }
     }
 
